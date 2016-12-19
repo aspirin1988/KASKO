@@ -15,10 +15,13 @@
 
     Route::post ( '/api/find/car', 'CarController@getCarPriceApi' );
 
+    Route::post ( '/soap', 'SoapController@index' );
 
     Auth::routes ();
 
     Route::get ( '/home', 'HomeController@index' );
 
     Route::post ( '/cars/price/get', 'CarController@getCarPrice' );
+
+
 

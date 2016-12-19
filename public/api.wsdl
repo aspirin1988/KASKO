@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions name="TicketService"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+             xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+             targetNamespace="urn:ADSBibcodeQuery"
+             xmlns:tns="urn:ADSBibcodeQuery">
+
+<documentation>
+    Car price
+</documentation>
+
+<types>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:ADSBibcodeQuery">
+        <element name="mark" type="string" minOccurs="1" maxOccurs="100" />
+        <element name="model" type="string" minOccurs="0" />
+        <element name="year" type="string" minOccurs="0" />
+        <element name="price" type="string" minOccurs="0" />
+    </schema>
+</types>
+<!-- Блок содержит информацию о функции и какие параметры она принимает и возвращает -->
+<message name="sessionId">
+    <part name="body" type="xsd:string" />
+</message>
+<message name="hallsList">
+    <part name="body" type="xsd:string" />
+</message>
+<message name="hallId">
+    <part name="body" type="xsd:string" />
+</message>
+<message name="hallScheme">
+    <part name="body" type="xsd:string" />
+</message>
+<message name="token">
+    <part name="body" type="xsd:string" />
+</message>
+<message name="sessionsList">
+    <part name="body" type="xsd:string" />
+</message>
+<!-- Блок содержит список функций, принимаемые и возвращаемые ими данные и параметры -->
+<porttype name="CarController">
+    <operation name="getCarPriceApi">
+        <input message="tns:mark" />
+        <input message="tns:model" />
+        <input message="tns:year" />
+        <output message="tns:price"/>
+    </operation>
+</porttype>
+
+<service name="CarService">
+    <port name="CarServicePort" binding="tns:CarServiceBinding">
+        <http:address location="http://localhost:8000/soap" />
+    </port>
+</service>
+
+<binding name="CarServiceBinding" type="tns:CarServicePort">
+    <http:binding verb="GET" />
+    <operation name="getCarPriceApi">
+        <http:operation location="http://localhost:8000/soap" />
+        <input />
+        <http:urlencoded />
+        <output>
+            <mime:content type="text/html" />
+        </output>
+    </operation>
+</binding>
+</definitions>
