@@ -13,12 +13,16 @@
 </documentation>
 
 <types>
-    <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:ADSBibcodeQuery">
-        <element name="mark" type="string" minOccurs="1" maxOccurs="100" />
-        <element name="model" type="string" minOccurs="0" />
-        <element name="year" type="string" minOccurs="0" />
-        <element name="price" type="string" minOccurs="0" />
-    </schema>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:ADSBibcodeQuery">
+        <xsd:complexType name="CreateUpdateUserResponse">
+            <xsd:all>
+                <element name="mark" type="string" minOccurs="1" maxOccurs="100" />
+                <element name="model" type="string" minOccurs="0" />
+                <element name="year" type="string" minOccurs="0" />
+                <element name="price" type="string" minOccurs="0" />
+            </xsd:all>
+        </xsd:complexType>
+    </xsd:schema>
 </types>
 <!-- Блок содержит информацию о функции и какие параметры она принимает и возвращает -->
 <message name="sessionId">
