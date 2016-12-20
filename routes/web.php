@@ -11,9 +11,14 @@
     |
     */
 
-    Route::get ( '/', function (){return view ( 'welcome' );} );
+    Route::get ( '/', function (){
+        return view ( 'welcome' );
+    } );
 
     Route::post ( '/api/find/car', 'CarController@getCarPriceApi' );
+    Route::get ( '/api/get/mark', 'CarController@getMark' );
+    Route::post ( '/api/get/model', 'CarController@getModel' );
+    Route::post ( '/api/get/year', 'CarController@getYear' );
 
     Route::post ( '/soap', 'SoapController@index' );
 
@@ -23,13 +28,13 @@
 
     Route::post ( '/cars/price/get', 'CarController@getCarPrice' );
 
-    Route::get('/scrapper', function() {
-        $crawler = Goutte::request('GET', 'https://auto.ru/catalog/all/');
-        $crawler->filter('.mosaic__p_size_m > a')->each(function ($node) {
-            print $node->text()."<br>";
-        });
+    Route::get ( '/scrapper', function (){
+        $crawler = Goutte::request ( 'GET', 'https://auto.ru/catalog/all/' );
+        $crawler->filter ( '.mosaic__p_size_m > a' )->each ( function ($node){
+            print $node->text ()."<br>";
+        } );
         //return view('welcome');
-});
+    } );
 
 
 
