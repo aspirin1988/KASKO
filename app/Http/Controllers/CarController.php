@@ -35,6 +35,11 @@
 
         }
 
+        public function addCarForm ()
+        {
+            return view('car/form');
+        }
+
         public function getCarPriceApi (Request $request)
         {
             $request=$request->all();
