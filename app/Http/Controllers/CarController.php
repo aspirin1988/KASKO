@@ -2,6 +2,7 @@
 
     namespace App\Http\Controllers;
 
+    use App\RawData;
     use Illuminate\Http\Request;
     use App\СarList;
     use App\ReadyData;
@@ -54,7 +55,7 @@
             } )->first();
             if ( $car ){
 
-                $data = ReadyData::where ( 'car_id', $car->id )->orderBy ( 'date', 'DESC' )->first ();
+                $data = RawData::where ( 'car_id', $car->id )->orderBy ( 'date', 'DESC' )->first ();
                 if ( $data ){
                     $data->car_name = $data->getCarName ();
                 }
@@ -72,19 +73,19 @@
 
         public function getMark ()
         {
-            $mark = СarList::select('mark')->distinct( 'mark' )->get ();
+            $mark = СarList::select('mark')->distinct( 'mark' )->orderBy('mark',"ASC")->get ();
             return response ()->json ( $mark );
         }
 
         public function getModel (Request $request)
         {
-            $model = СarList::select('model')->distinct( 'model' )->where('mark',$request->input('mark'))->get ();
+            $model = СarList::select('model')->distinct( 'model' )->where('mark',$request->input('mark'))->orderBy('model',"ASC")->get ();
             return response ()->json ( $model );
         }
 
         public function getYear (Request $request)
         {
-            $year = СarList::select('year')->distinct( 'year' )->where('mark',$request->input('mark'))->where('model',$request->input('model'))->get ();
+            $year = СarList::select('year')->distinct( 'year' )->where('mark',$request->input('mark'))->where('model',$request->input('model'))->orderBy('year',"ASC")->get ();
             return response ()->json ( $year );
         }
     }
