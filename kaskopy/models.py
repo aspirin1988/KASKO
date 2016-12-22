@@ -1,20 +1,19 @@
 # coding: utf-8
 from peewee import *
 
-# db = MySQLDatabase('dbname', host='mysql', user='dbuse',
-#                    password='dbpass', charset='utf8')
+db = MySQLDatabase('centras', host='localhost', user='root', password='root', charset='utf8')
 
-db = SqliteDatabase('kaskopy.db')
+#db = SqliteDatabase('kaskopy.db')
 
 
 class Car(Model):
-    brand = CharField()
+    mark = CharField()
     model = CharField()
     year = IntegerField()
 
     class Meta:
         database = db
-        db_table = 'cars'
+        db_table = 'сar_lists'
 
 
 class RawData(Model):

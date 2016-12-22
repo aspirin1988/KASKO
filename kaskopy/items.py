@@ -17,9 +17,9 @@ class CarItem(scrapy.Item):
 
     def save(self):
         kwargs = {
-            'brand': self['brand'],
+            'mark': self['brand'],
             'model': self['model'],
             'year': self['year']
         }
-        car = Car.get_or_create(**kwargs)
+        created, car = Car.get_or_create(**kwargs)
         RawData.create(price=self['price'], car=car)
