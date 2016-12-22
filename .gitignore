@@ -5,3 +5,5 @@
 Homestead.json
 Homestead.yaml
 .env
+kaskopy.db
+__pycache__
