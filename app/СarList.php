@@ -12,7 +12,9 @@ class СarList extends Model
 
     public static function getFormData ()
     {
-
+        $mark=self::select('mark')->distinct('mark')->get();
+        $model=[]/*self::distinct('model')->get()*/;
+        $year=[]/*self::distinct('year')->get()*/;
         return ['mark'=>$mark,'model'=>$model,'year'=>$year];
     }
 }

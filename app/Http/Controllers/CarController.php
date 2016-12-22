@@ -37,7 +37,7 @@
 
         public function addCarForm ()
         {
-            return view('car/form');
+            return view('car.form');
         }
 
         public function getCarPriceApi (Request $request)
