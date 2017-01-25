@@ -1,4 +1,4 @@
-{{!$form_data=\App\СarList::getFormData() }}
+{{!$form_data=\App\CarList::getFormData() }}
 <form class="form-horizontal" id="_search" role="form" method="POST" action="{{url('/cars/price/get')}}">
     {{ csrf_field() }}
     <div class="form-group">

@@ -4,12 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class СarList extends Model
+class CarList extends Model
 {
-    public $timestamps = true;
-
-    protected $guarded = array();
-
+    public $table = 'car_lists';
     public static function getFormData ()
     {
         $mark=self::select('mark')->distinct('mark')->get();
