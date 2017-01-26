@@ -2,6 +2,7 @@
 
     namespace App;
 
+
     class KascoSoapServer{
 
         public function getOptions ()
@@ -12,7 +13,7 @@
         public function getPrice ($mark = null, $model = null, $year = null)
         {
             $query = [ 'mark' => $mark, 'model' => $model, 'year' => $year ];
-            $car=СarList::where ( function ($querys) use ($query){
+            $car=CarList::where ( function ($querys) use ($query){
                 foreach ($query as $key=>$value){
                     if ($value){
                         $querys->where($key,$value);

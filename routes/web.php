@@ -28,13 +28,6 @@
     Route::post ( '/cars/price/get', 'CarController@getCarPrice' );
     Route::get ( '/cars/add', 'CarController@addCarForm' );
 
-    Route::get ( '/scrapper', function (){
-        $crawler = Goutte::request ( 'GET', 'https://auto.ru/catalog/all/' );
-        $crawler->filter ( '.mosaic__p_size_m > a' )->each ( function ($node){
-            print $node->text ()."<br>";
-        } );
-        //return view('welcome');
-    } );
 
     Auth::routes ();
 
