@@ -12,7 +12,7 @@
         public function getCarPrice (Request $request)
         {
 
-            $car = СarList::where ( 'mark', $request->input ( 'mark' ) )->where ( 'model', $request->input ( 'model' ) )
+            $car = CarList::where ( 'mark', $request->input ( 'mark' ) )->where ( 'model', $request->input ( 'model' ) )
                           ->where ( 'year', $request->input ( 'year' ) )->first ();
 
             $find = $request->all ();

@@ -12,7 +12,7 @@ class ReadyData extends Model
 
     public function getCarName ()
     {
-        $data = СarList::where('id',$this->car_id)->first();
+        $data = CarList::where('id',$this->car_id)->first();
         return $data;
     }
 }
