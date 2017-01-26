@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class CarList extends Model
 {
-    public $table = 'car_lists';
+    public $table = 'сar_lists';
     public static function getFormData ()
     {
         $mark=self::select('mark')->distinct('mark')->get();
