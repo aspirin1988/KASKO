@@ -22,7 +22,6 @@
 
     Route::post ( '/soap', 'SoapController@index' );
 
-    Auth::routes ();
 
     Route::get ( '/home', 'HomeController@index' );
 
@@ -36,6 +35,9 @@
         } );
         //return view('welcome');
     } );
+
+    Auth::routes ();
+
 
 
 

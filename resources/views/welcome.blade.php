@@ -65,13 +65,12 @@
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    <a href="{{ url('/login') }}">Войти</a>
-                    <a href="{{ url('/register') }}">Зарегистрироваться</a>
-                </div>
-            @endif
+
+    <div class="flex-center position-ref full-height">
+        <div class="top-right links">
+            <a href="<?=url('/home')?>">Найти машину</a>
+            <a href="<?=url('/cars/add')?>">Добавить машину</a>
+        </div>
 
             <div class="content">
                 <div class="title m-b-md">
