@@ -83,6 +83,7 @@
                        $("#_result_error").hide();
                        success.find('tbody').html('')
                                .append($("<tr/>")
+                                       .append($("<td/>").text(data.car_name.id))
                                        .append($("<td/>").text(data.car_name.mark))
                                        .append($("<td/>").text(data.car_name.model))
                                        .append($("<td/>").text(data.car_name.year))

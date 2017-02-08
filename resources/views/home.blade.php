@@ -14,6 +14,7 @@
                 <table class="table" id="_result_success" style="display: none">
                     <thead>
                     <tr>
+                        <th>ID</th>
                         <th>Марка</th>
                         <th>Модель</th>
                         <th>Год</th>

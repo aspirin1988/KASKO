@@ -13,6 +13,7 @@
                 <table class="table">
                     <thead>
                     <tr>
+                        <th>ID</th>
                         <th>Марка</th>
                         <th>Модкль</th>
                         <th>Год</th>
@@ -21,6 +22,7 @@
                     </thead>
                     <tbody>
                     <tr>
+                        <td>{{$data->car_name->ID}}</td>
                         <td>{{$data->car_name->mark}}</td>
                         <td>{{$data->car_name->model}}</td>
                         <td>{{$data->car_name->year}}</td>
