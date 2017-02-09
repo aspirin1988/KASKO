@@ -44,7 +44,6 @@
         public function getCarPriceApi (Request $request)
         {
             $request=$request->all();
-//            return response()->json($request);
             unset($request['_token']);
             $car=CarList::where ( function ($querys) use ($request){
                 foreach ($request as $key=>$value){
@@ -55,7 +54,7 @@
             } )->first();
             if ( $car ){
 
-                $data = RawData::where ( 'car_id', $car->id )->orderBy ( 'date', 'DESC' )->first ();
+                $data = ReadyData::where ( 'car_id', $car->id )->orderBy ( 'date', 'DESC' )->first ();
                 if ( $data ){
                     $data->car_name = $data->getCarName ();
                 }
