@@ -49,24 +49,24 @@
                     ->get();
                 $count = RawData::where( 'car_id', $car->id )->count();
                 if( $count > 1 ) {
-                    $summ  = [];
-                    $summ1 = [];
+                    $prices  = [];
+                    $prices_sort = [];
                     foreach( $data as $key1 => $value ) {
-                        $summ[] = $value->price;
+                        $prices[] = $value->price;
                     }
-                    asort( $summ );
-                    foreach( $summ as $key1 => $value ) {
-                        $summ1[] = $value;
+                    asort( $prices );
+                    foreach( $prices as $key1 => $value ) {
+                        $prices_sort[] = $value;
                     }
                     $result = false;
                     if( count( $count ) % 2 ) {
-                        $a      = ceil( count( $summ1 ) / 2 ) - 1;
+                        $a      = ceil( count( $prices_sort ) / 2 ) - 1;
                         $b      = $a + 1;
-                        $result = ceil( ( $summ1[ $a ] + $summ1[ $b ] ) / 2 );
+                        $result = ceil( ( $prices_sort[ $a ] + $prices_sort[ $b ] ) / 2 );
                     }
                     else {
-                        $a = ceil( count( $summ1 ) / 2 );
-                        $result = $summ1[ $a ];
+                        $a = ceil( count( $prices_sort ) / 2 );
+                        $result = $prices_sort[ $a ];
                     }
                     echo $result."\n"."count:".$count.":".($count%2)."\n";
 
