@@ -6,6 +6,7 @@
     use App\RawData;
     use App\ReadyData;
     use Illuminate\Console\Command;
+    use Illuminate\Support\Facades\DB;
 
     class Demon extends Command
     {
@@ -42,17 +43,43 @@
         {
             $cars = CarList::get();
             foreach( $cars as $key => $car ) {
+                echo $car->id."\n";
+                $data  = RawData::select( 'price' )
+                    ->where( 'car_id', $car->id )
+                    ->get();
                 $count = RawData::where( 'car_id', $car->id )->count();
-                $summ  = RawData::where( 'car_id', $car->id )->sum( 'price' );
-                if( $count ) {
+                if( $count > 1 ) {
+                    $summ  = [];
+                    $summ1 = [];
+                    foreach( $data as $key1 => $value ) {
+                        $summ[] = $value->price;
+                    }
+                    asort( $summ );
+                    foreach( $summ as $key1 => $value ) {
+                        $summ1[] = $value;
+                    }
+                    $result = false;
+                    if( count( $count ) % 2 ) {
+                        $a      = ceil( count( $summ1 ) / 2 ) - 1;
+                        $b      = $a + 1;
+                        $result = ceil( ( $summ1[ $a ] + $summ1[ $b ] ) / 2 );
+                    }
+                    else {
+                        $a = ceil( count( $summ1 ) / 2 );
+                        $result = $summ1[ $a ];
+                    }
+                    echo $result."\n"."count:".$count.":".($count%2)."\n";
 
-                    $data  = RawData::select( 'price' )->where( 'car_id', $car->id )->where( 'price', '>', $summ / $count )->orderBy( 'price', 'ASC' )->sum( 'price' );
-                    $count = RawData::select( 'price' )->where( 'car_id', $car->id )->where( 'price', '>', $summ / $count )->orderBy( 'price', 'ASC' )->count();
+                    if( $result ) {
+                        ReadyData::create( [ 'car_id' => $car->id, 'price' => $result, 'date' => date( 'Y-m-d H:i:s' ) ] );
+                    }
+                }
+                else{
+                    ReadyData::create( [ 'car_id' => $car->id, 'price' => $data[0]->price, 'date' => date( 'Y-m-d H:i:s' ) ] );
+                    echo $data[0]->price."\n"."count:".$count.":".($count%2)."\n";
 
-                    if( $count )
-                        ReadyData::create( [ 'car_id' => $car->id, 'price' => $data / $count, 'date' => date( 'Y-m-d H:i:s' ) ] );
                 }
             }
-            RawData::truncate();
+//            RawData::truncate();
         }
     }
