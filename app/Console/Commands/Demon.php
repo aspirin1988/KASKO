@@ -80,6 +80,6 @@
 
                 }
             }
-//            RawData::truncate();
+            RawData::truncate();
         }
     }
