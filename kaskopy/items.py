@@ -21,5 +21,5 @@ class CarItem(scrapy.Item):
             'model': self['model'],
             'year': self['year']
         }
-        created, car = Car.get_or_create(**kwargs)
+        car, created = Car.get_or_create(**kwargs)
         RawData.create(price=self['price'], car=car)
