@@ -75,8 +75,10 @@
                     }
                 }
                 else{
-                    ReadyData::create( [ 'car_id' => $car->id, 'price' => $data[0]->price, 'date' => date( 'Y-m-d H:i:s' ) ] );
-                    echo $data[0]->price."\n"."count:".$count.":".($count%2)."\n";
+                    if ($count) {
+                        ReadyData::create( [ 'car_id' => $car->id, 'price' => $data[ 0 ]->price, 'date' => date( 'Y-m-d H:i:s' ) ] );
+                        echo $data[ 0 ]->price."\n"."count:".$count.":".( $count % 2 )."\n";
+                    }
 
                 }
             }
